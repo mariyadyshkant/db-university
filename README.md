@@ -11,48 +11,50 @@ Modellizzare la struttura di un database per memorizzare tutti i dati riguardant
 - per ogni appello d'Esame a cui lo Studente ha partecipato, è necessario memorizzare il `voto ottenuto`, anche se non sufficiente.
 
 ### Dipartimento
-- id_dipartimento (PK)
-- nome 
-- sede
-- telefono
-- email
+- id_dipartimento (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- nome *NOT NULL VARCHAR(50)*
+- sede *VARCHAR(50)*
+- telefono *CHAR(9)*
+- email *VARCHAR(50)*
 
 ### Corso di Laurea
-- id_corso_laurea (PK)
-- id_dipartimento (FK)
-- nome
-- cfu
-- durata
-
-### Corso
-- id_corso (PK)
-- id_corso_laurea (FK)
-- nome
-- cfu
-- durata
-
-## Insegnante
-- id_insegnante
-- nome
-- cognome
-- email
-- telefono
-
-## Appello d'Esame
-- id_appello
-- data
-- id_corso (FK)
+- id_corso_laurea (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- id_dipartimento (FK) *NOT NULL VARCHAR(10)*
+- nome *NOT NULL VARCHAR(50)*
+- cfu *TINYINT*
+- durata *TINYINT*
 
 ## Studente
-- id_studente
-- nome
-- cognome
-- email
-- anno iscrizione
+- id_studente (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- id_corso_laurea (FK) *NOT NULL VARCHAR(10)*
+- nome *NOT NULL VARCHAR(50)*
+- cognome *NOT NULL VARCHAR(50)*
+- email *VARCHAR(50)*
+- anno_iscrizione *YEAR*
+
+
+### Corso
+- id_corso (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- id_corso_laurea (FK) *NOT NULL VARCHAR(10)*
+- nome *NOT NULL VARCHAR(50)*
+- cfu *TINYINT*
+- durata *TINYINT*
+
+## Insegnante
+- id_insegnante (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- nome *NOT NULL VARCHAR(50)*
+- cognome *NOT NULL VARCHAR(50)*
+- email *VARCHAR(50)*
+- telefono *CHAR(9)*
+
+## Appello d'Esame
+- id_appello (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)* 
+- id_corso (FK) *NOT NULL VARCHAR(10)*
+- id_studente (FK) *NOT NULL VARCHAR(10)*
+- data_appello *DATE*
 
 ## Voto esame
-- id_voto
-- id_studente (FK)
-- id_appello (FK)
-- voto
-- data
+- id_voto (PK) *NOT NULL AUTO_INCREMENT VARCHAR(10)*
+- id_studente (FK) *NOT NULL VARCHAR(10)*
+- id_appello (FK) *NOT NULL VARCHAR(10)*
+- voto *TINYINT*
